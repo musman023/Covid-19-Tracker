@@ -1,5 +1,8 @@
 import 'package:covid_tracker/Services/states_services.dart';
+import 'package:covid_tracker/View/detail_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CountriesListScreen extends StatefulWidget {
@@ -62,18 +65,44 @@ class _CountriesListScreenState extends State<CountriesListScreen>
                             if (searchController.text.toString().isEmpty) {
                               return Column(
                                 children: [
-                                  ListTile(
-                                    title:
-                                        Text(snapshot.data![index]['country']),
-                                    subtitle: Text(snapshot.data![index]
-                                            ['cases']
-                                        .toString()),
-                                    leading: Image(
-                                        height: 60,
-                                        width: 60,
-                                        image: NetworkImage(
-                                            snapshot.data![index]['countryInfo']
-                                                ['flag'])),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => DetailScreen(
+                                                  name: snapshot.data![index]
+                                                      ['country'],
+                                                  image: snapshot.data![index]
+                                                      ['countryInfo']['flag'],
+                                                  totalCases: snapshot.data![index]
+                                                      ['cases'],
+                                                  totalDeaths: snapshot.data![index]
+                                                      ['deaths'],
+                                                  totalRecovered:
+                                                      snapshot.data![index]
+                                                          ['recovered'],
+                                                  active: snapshot.data![index]
+                                                      ['active'],
+                                                  critical: snapshot.data![index]
+                                                      ['critical'],
+                                                  test: snapshot.data![index]
+                                                      ['tests'],
+                                                  todayRecovered: snapshot.data![index]['todayRecovered'])));
+                                    },
+                                    child: ListTile(
+                                      title: Text(
+                                          snapshot.data![index]['country']),
+                                      subtitle: Text(snapshot.data![index]
+                                              ['cases']
+                                          .toString()),
+                                      leading: Image(
+                                          height: 60,
+                                          width: 60,
+                                          image: NetworkImage(
+                                              snapshot.data![index]
+                                                  ['countryInfo']['flag'])),
+                                    ),
                                   )
                                 ],
                               );
@@ -83,18 +112,44 @@ class _CountriesListScreenState extends State<CountriesListScreen>
                                     .toLowerCase())) {
                               return Column(
                                 children: [
-                                  ListTile(
-                                    title:
-                                        Text(snapshot.data![index]['country']),
-                                    subtitle: Text(snapshot.data![index]
-                                            ['cases']
-                                        .toString()),
-                                    leading: Image(
-                                        height: 60,
-                                        width: 60,
-                                        image: NetworkImage(
-                                            snapshot.data![index]['countryInfo']
-                                                ['flag'])),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => DetailScreen(
+                                                  name: snapshot.data![index]
+                                                      ['country'],
+                                                  image: snapshot.data![index]
+                                                      ['countryInfo']['flag'],
+                                                  totalCases: snapshot.data![index]
+                                                      ['cases'],
+                                                  totalDeaths: snapshot.data![index]
+                                                      ['deaths'],
+                                                  totalRecovered:
+                                                      snapshot.data![index]
+                                                          ['recovered'],
+                                                  active: snapshot.data![index]
+                                                      ['active'],
+                                                  critical: snapshot.data![index]
+                                                      ['critical'],
+                                                  test: snapshot.data![index]
+                                                      ['tests'],
+                                                  todayRecovered: snapshot.data![index]['todayRecovered'])));
+                                    },
+                                    child: ListTile(
+                                      title: Text(
+                                          snapshot.data![index]['country']),
+                                      subtitle: Text(snapshot.data![index]
+                                              ['cases']
+                                          .toString()),
+                                      leading: Image(
+                                          height: 60,
+                                          width: 60,
+                                          image: NetworkImage(
+                                              snapshot.data![index]
+                                                  ['countryInfo']['flag'])),
+                                    ),
                                   )
                                 ],
                               );

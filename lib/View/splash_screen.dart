@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:covid_tracker/View/worls_states.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -16,6 +19,22 @@ class _SplashScreenState extends State<SplashScreen>
       AnimationController(duration: const Duration(seconds: 3), vsync: this)
         ..repeat();
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
+
+  void initState() {
+    super.initState();
+    Timer(
+        const Duration(seconds: 5),
+        () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const WorldStatesScreen())));
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
